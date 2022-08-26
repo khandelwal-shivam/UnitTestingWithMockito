@@ -37,10 +37,5 @@ public class SpyTest {
 
         Mockito.verify(bookRepositorySpy).save(book1);
         Mockito.verify(bookRepositorySpy,Mockito.times(1)).save(book2);
-
-
-
-
-
     }
 }
