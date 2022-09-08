@@ -1,9 +1,9 @@
-package stubbing.Service;
+package BDD.Stubbing.Service;
 
+import BDD.Stubbing.Entity.Book;
+import BDD.Stubbing.Repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import stubbing.Entity.Book;
-import stubbing.Repository.BookRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,16 +27,5 @@ public class BookService {
                         (book.getPrice()*(100-discountRate))/100,
                         book.getPublishDate()))
                 .collect(Collectors.toList());
-    }
-    public int calculateTotalCost(List<String> bookIds) {
-        int totalCost = bookIds.stream()
-                            .map(bookId -> bookRepository.findBookByBookId(bookId))
-                            .map(book -> book.getPrice())
-                            .reduce(0,(book1Price,book2Price) -> book1Price + book2Price);
-        return totalCost;
-    }
-
-    public void addBook(Book book) {
-        bookRepository.save(book);
     }
 }

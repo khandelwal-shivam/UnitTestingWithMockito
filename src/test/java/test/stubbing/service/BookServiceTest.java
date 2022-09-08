@@ -37,4 +37,10 @@ public class BookServiceTest {
         assertEquals(1000,totalCost);
     }
 
+    @Test
+    public void saveTestBook(){
+        //stubbing void methods
+        Book book1 = new Book(null,"Mockito In Action",500, LocalDate.now());
+        Mockito.doNothing().when(bookService).addBook(book1);
+    }
 }
